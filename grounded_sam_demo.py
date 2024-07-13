@@ -226,8 +226,7 @@ if __name__ == "__main__":
     sorted_mask_and_iou_pairs = sorted(mask_and_iou_pairs, key=lambda x: x[1], reverse=True)
     masks, iou_predictions = zip(*sorted_mask_and_iou_pairs)
 
-    for ind, mask in enumerate(masks):
-        cv2.imwrite(os.path.join(output_dir, "mask_%d.jpg" % ind), mask.cpu().numpy()[0].astype(np.uint8) * 255)
+    cv2.imwrite(os.path.join(output_dir, "mask.jpg"), masks[0].cpu().numpy()[0].astype(np.uint8) * 255)
     # draw output image
     # plt.figure(figsize=(10, 10))
     # plt.imshow(image)
